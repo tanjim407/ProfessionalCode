@@ -99,5 +99,10 @@ public class StudentList {
 			}
 			System.out.println("Data Loaded.");
 		}
+		else{
+			System.err.println("Invalid number of argument");
+			System.err.println("Exiting programme");
+			System.exit(1);
+		}
 	}
 }
