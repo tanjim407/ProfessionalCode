@@ -5,8 +5,7 @@ import java.util.*;
 public class StudentList {
 	
 	public static String getLineFromFile() throws Exception {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(Constants.STUDENTS_FILE_NAME )));
-        String line = bufferedReader.readLine();
+        String line =new BufferedReader(new InputStreamReader(new FileInputStream(Constants.STUDENTS_FILE_NAME ))).bufferedReader.readLine();
         return line;
     }
 	public static BufferedWriter getFileBufferedWriter() throws Exception {
@@ -18,9 +17,8 @@ public class StudentList {
 		if (args[0].equals(Constants.ARG_LIST_DATA)) {
 			System.out.println(Constants.MSG_LOADING_DATA);
 			try {
-				String studentNames = getLineFromFile();
-				String names[] = studentNames.split(Constants.WORDS_SPLIT_REGEX);
-				for (String name : names) {
+				
+				for (String name : getLineFromFile().split(Constants.WORDS_SPLIT_REGEX);) {
 					System.out.println(name);
 				}
 			} catch (Exception e) {
@@ -30,11 +28,9 @@ public class StudentList {
 	     else if (args[0].equals(Constants.ARG_SHOW_RANDOM_DATA)) {
 			System.out.println(Constants.MSG_LOADING_DATA);
 			try {
-				String studentNames = getLineFromFile();
-				System.out.println(studentNames);
+				System.out.println(getLineFromFile());
 				String names[] = studentNames.split(Constants.WORDS_SPLIT_REGEX);
-				Random random = new Random();
-				int randomValue = random.nextInt();
+				int randomValue = new Random().random.nextInt();
 				System.out.println(names[randomValue]);
 			} catch (Exception e) {
 			}
@@ -43,14 +39,10 @@ public class StudentList {
 		 else if (args[0].contains(Constants.ARG_ADD_DATA)) {
 			System.out.println(Constants.MSG_LOADING_DATA);
 			try {
-				BufferedWriter bufferedWriter = getFileBufferedWriter();
-				String name = args[0].substring(1);
-				Date date = new Date();
-				String dateForm = Constants.DATE_FORMAT_PATTERN;
-				DateFormat dateFormat = new SimpleDateFormat(dateForm);
-				String formatDate = dateFormat.format(date);
-				bufferedWriter.write(Constants.WORDS_SPLIT_REGEX + name + "\n"Constants.MSG_DATA_UPDATED+ "" + formatDate);
-				bufferedWriter.close();
+				String name = args[0].substring(1);				
+				String formatDate = new SimpleDateFormat( Constants.DATE_FORMAT_PATTERN).format(new Date());
+				getFileBufferedWriter().write(Constants.WORDS_SPLIT_REGEX + name + "\n"Constants.MSG_DATA_UPDATED+ "" + formatDate);
+				getFileBufferedWriter().close();
 			} catch (Exception e) {
 			}
 
