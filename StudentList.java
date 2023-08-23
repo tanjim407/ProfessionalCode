@@ -66,7 +66,7 @@ public class StudentList {
 			} catch (Exception e) {
 			}
 			System.out.println(Constants.MSG_LOADED_DATA);
-		
+		 }
 		
 		else if (args[0].contains(Constants.ARG_COUNT_WORDS)) {
 			System.out.println(Constants.MSG_LOADING_DATA);
@@ -86,7 +86,7 @@ public class StudentList {
 						}
 					}
 				}
-				System.out.println(count + Constants.MSG_WORDS_FOUND + names.length);
+				System.out.println(getLineFromFile().split(Constants.WORDS_SPLIT_REGEX).length/2+ Constants.MSG_WORDS_FOUND + names.length);
 			} catch (Exception e) {
 			}
 			System.out.println(Constants.MSG_LOADED_DATA);
