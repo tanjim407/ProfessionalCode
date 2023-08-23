@@ -54,12 +54,13 @@ public class StudentList {
 
 				String studentName = getLineFromFile();
 				String names[] = studentName.split(Constants.WORDS_SPLIT_REGEX);
-				boolean done = false;
 				String name = args[0].substring(1);
 				for (int index = 0; index < names.length && !done; index++) {
-					if (names[index].equals(name)) {
+					if (Array.asList(getLineFromFile().split(Constants.WORDS_SPLIT_REGEX)).contains( args[0].substring(1))) {
 						System.out.println(Constants.MSG_DATA_FOUND);
-						done = true;
+					}
+					else{
+						System.out.println("NOt Found");
 					}
 				}
 			} catch (Exception e) {
